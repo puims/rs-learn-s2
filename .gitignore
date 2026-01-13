@@ -1,0 +1,7 @@
+/target/
+
+/apps/demo/
+
+Cargo.lock
+
+*.sh

@@ -1,0 +1,21 @@
+[workspace]
+members = ["crates/*", "apps/*"]
+default-members = []
+exclude = []
+resolver = "3"
+
+[workspace.dependencies]
+clap = { version = "4.4", features = ["derive"] }
+walkdir = "2.4"
+regex = "1.10"
+chrono = "0.4"
+anyhow = "1.0"
+thiserror = "1.0"
+once_cell = "1.5"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Alan<invidiia@163.com>"]
+license = "MIT"
+description = "A practice project for rust learning season 2."

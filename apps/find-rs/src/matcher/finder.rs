@@ -2,7 +2,7 @@ use std::{path::{Path, PathBuf}};
 
 use walkdir::{DirEntry, WalkDir};
 
-use crate::{matcher, matcher::{filter_type, mtime::match_mtime, name, size::match_size}, types::{Cli, FindResult}};
+use crate::{matcher, matcher::{filter_type, mtime::match_mtime, size::match_size}, types::{Cli, FindResult}};
 
 pub fn find_files(walker: WalkDir, cli: &Cli) -> FindResult<Vec<PathBuf>> {
     let matches = walker

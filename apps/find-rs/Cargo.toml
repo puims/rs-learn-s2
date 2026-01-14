@@ -4,17 +4,19 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-# description.workspace = true
 description = "A fast, modern find command replacement written in Rust"
 
 [dependencies]
-clap = { workspace = true }
+clap = { workspace = true, features = ["derive", "cargo", "env"] }
 walkdir = { workspace = true }
 regex = { workspace = true }
-chrono = { workspace = true }
+chrono = { workspace = true, features = ["serde"] }
 anyhow = { workspace = true }
 thiserror = { workspace = true }
 once_cell = { workspace = true }
+
+[features]
+debug = []  # 添加调试特性
 
 [dev-dependencies]
 tempfile = "3.6"

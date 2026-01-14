@@ -54,7 +54,13 @@ pub struct Cli {
 #[derive(clap::Args, Clone, Debug)]
 pub struct SearchCriteria {
     /// Search for files with a given name (supports wildcard patterns like *.txt)
-    #[arg(short, long, group = "matcher")]
+    #[arg(
+        short, 
+        long, 
+        group = "matcher",
+        num_args = 1..,
+        value_delimiter = ',',
+    )]
     pub name: Option<String>,
 
     /// Search for files with a given regex pattern
@@ -145,10 +151,16 @@ pub enum FilterType {
 
 fn validate_path(s: &str) -> Result<PathBuf, String> {
     let path = PathBuf::from(s);
-    if !path.is_dir() {
-        return Err(format!("Path {} is not a directory", s));
+    
+    // 检查路径是否存在
+    if !path.exists() {
+        return Err(format!("Path '{}' does not exist", s));
     }
-
+    
+    // 注意：我们不强制要求路径必须是目录
+    // 因为 find 命令也支持在文件上运行
+    // 如果路径是文件，那么只会搜索这个文件本身
+    
     Ok(path)
 }
 
